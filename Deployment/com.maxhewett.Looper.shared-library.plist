@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AssociatedBundleIdentifiers</key>
+	<array>
+		<string>com.maxhewett.Looper</string>
+	</array>
+	<key>Label</key>
+	<string>com.maxhewett.Looper.shared-library</string>
+	<key>LimitLoadToSessionType</key>
+	<string>Aqua</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/PrivilegedHelperTools/com.maxhewett.Looper.device-helper</string>
+		<string>connect-shared-library</string>
+	</array>
+	<key>WatchPaths</key>
+	<array>
+		<string>/Library/Application Support/Looper/Logic Pro Library.bundle/Application Support/Package Definitions</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "updated": "2026-08-11T00:00:00Z",
+  "packages": [
+    {
+      "id": "garageband-apple-loops-example",
+      "displayName": "GarageBand Apple Loops Example",
+      "url": "https://example.invalid/path/to/apple-loops.pkg",
+      "sha256": null,
+      "pkgIdentifier": "com.apple.pkg.garageband.appleloops.example",
+      "targetApps": ["GarageBand", "Logic Pro"],
+      "notes": "Replace with a current Apple-provided package URL."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AssociatedBundleIdentifiers</key>
+	<array>
+		<string>com.maxhewett.Looper</string>
+	</array>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>TMPDIR</key>
+		<string>/Library/Caches/Looper/tmp</string>
+	</dict>
+	<key>Label</key>
+	<string>com.maxhewett.Looper.device-helper</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/PrivilegedHelperTools/com.maxhewett.Looper.device-helper</string>
+		<string>install</string>
+		<string>--device-service</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>SpawnConstraint</key>
+	<dict>
+		<key>signing-identifier</key>
+		<string>com.maxhewett.Looper.helper</string>
+		<key>team-identifier</key>
+		<string>FHXMYC956U</string>
+	</dict>
+	<key>StandardErrorPath</key>
+	<string>/var/log/Looper/looper.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/var/log/Looper/looper.out.log</string>
+	<key>WatchPaths</key>
+	<array>
+		<string>/Library/Application Support/Looper/Requests</string>
+	</array>
+</dict>
+</plist>

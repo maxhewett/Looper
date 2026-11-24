@@ -1,0 +1,43 @@
+{
+  "images": [
+    {
+      "filename": "LooperMenuBlackDownload01.png",
+      "idiom": "mac",
+      "scale": "1x"
+    },
+    {
+      "filename": "LooperMenuBlackDownload01@2x.png",
+      "idiom": "mac",
+      "scale": "2x"
+    },
+    {
+      "filename": "LooperMenuWhiteDownload01.png",
+      "idiom": "mac",
+      "scale": "1x",
+      "appearances": [
+        {
+          "appearance": "luminosity",
+          "value": "dark"
+        }
+      ]
+    },
+    {
+      "filename": "LooperMenuWhiteDownload01@2x.png",
+      "idiom": "mac",
+      "scale": "2x",
+      "appearances": [
+        {
+          "appearance": "luminosity",
+          "value": "dark"
+        }
+      ]
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "original"
+  }
+}
