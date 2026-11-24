@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inside Looper · Looper Wiki</title>
+<link rel="icon" href="../assets/looper-icon.png">
+<script src="../assets/site.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="shell nav">
+  <a class="brand" href="../"><img src="../assets/looper-icon.png" alt="" width="36" height="36">Looper</a>
+  <nav aria-label="Primary"><a href="../#features">Features</a><a href="./" aria-current="page">Wiki</a><a href="https://github.com/maxhewett/Looper"><span class="mark github"></span>GitHub</a><select id="theme" aria-label="Appearance" title="Appearance" hidden><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select></nav>
+</header>
+<main class="shell docs" id="main">
+  <nav class="doc-nav" aria-label="Wiki"><p class="eyebrow">Wiki</p><a href="index.html">Getting started</a><a href="deployment.html">Jamf deployment</a><a href="architecture.html" aria-current="page">Inside Looper</a></nav>
+  <article class="doc-body">
+    <h1 id="inside-looper">Inside Looper</h1>
+    <details class="contents"><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#from-catalogue-to-library">From catalogue to library</a></li>
+<li><a href="#shared-logic-sound-content">Shared Logic sound content</a></li>
+<li><a href="#deployment-components">Deployment components</a></li>
+</ul>
+</div>
+</details>
+    
+    
+<p>The menu bar app, command-line tool and device helper share the same installation logic. On a shared Mac, the helper can prepare sound content before anyone signs in.</p>
+<h2 id="from-catalogue-to-library">From catalogue to library</h2>
+<ol>
+<li><strong>Discover.</strong> Looper builds a catalogue from available Apple content metadata. A manifest describes each pack, its target apps and its download location.</li>
+<li><strong>Select.</strong> The run scope selects eligible packs. Managed preferences take priority over local choices, and package exclusions narrow the selection.</li>
+<li><strong>Compare.</strong> Looper checks installer receipts and local content state to find packages that need attention.</li>
+<li><strong>Install.</strong> The device helper downloads the selected content. Interrupted package downloads can resume when the server supports range requests.</li>
+<li><strong>Review.</strong> Open Logging to inspect package-level results, or run <code>looper status</code> to check the most recent run.</li>
+</ol>
+<h2 id="shared-logic-sound-content">Shared Logic sound content</h2>
+<p>Modern Logic packs use a shared library bundle. The login agent connects a new account or an empty default library to that bundle. An account with an existing personal library can select the shared bundle in Logic’s Sound Library settings.</p>
+<h2 id="deployment-components">Deployment components</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Documentation table"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Looper.app</td>
+<td>Presents the Library, settings, menu bar controls and logs.</td>
+</tr>
+<tr>
+<td>Device helper</td>
+<td>Services installation requests with the privileges needed to write shared content.</td>
+</tr>
+<tr>
+<td>Preload service</td>
+<td>Checks managed content at installation, at boot and hourly when enabled.</td>
+</tr>
+<tr>
+<td>Login agents</td>
+<td>Start the menu bar app and connect users to the shared Logic library.</td>
+</tr>
+<tr>
+<td>Command-line tool</td>
+<td>Lists manifest packages, reports status and starts managed or manual runs.</td>
+</tr>
+</tbody>
+</table></div>
+<p>See the <a href="deployment.html">Jamf deployment guide</a> for the installation order and pilot checks.</p>
+  </article>
+</main>
+<footer class="shell footer"><span class="platform"><span class="mark swift"></span>Built with Swift for macOS</span><a href="https://github.com/maxhewett/Looper/blob/main/website/guides/architecture.md">View source document</a></footer>
+</body>
+</html>

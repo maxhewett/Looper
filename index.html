@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Manage Apple Loops and sound libraries for GarageBand, Logic Pro and MainStage on macOS.">
+<title>Looper — Apple sound libraries for Mac</title>
+<link rel="icon" href="assets/looper-icon.png">
+<script src="assets/site.js"></script>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="shell nav">
+  <a class="brand" href="./"><img src="assets/looper-icon.png" alt="" width="36" height="36">Looper</a>
+  <nav aria-label="Primary"><a href="#features">Features</a><a href="wiki/">Wiki</a><a href="https://github.com/maxhewett/Looper"><span class="mark github"></span>GitHub</a><select id="theme" aria-label="Appearance" title="Appearance" hidden><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select></nav>
+</header>
+<main id="main">
+  <section class="shell hero" aria-labelledby="hero-title">
+    <div class="hero-copy"><img class="hero-icon" src="assets/looper-icon.png" width="76" height="76" alt="">
+    <h1 id="hero-title">Manage your Mac’s<br><em>sound library.</em></h1>
+    <p class="intro">Looper downloads and installs Apple sound packs for GarageBand, Logic Pro and MainStage. Choose the sounds you need on one Mac or across a music lab.</p>
+    <div class="actions"><a class="button" href="https://github.com/maxhewett/Looper/releases/latest">Download for Mac</a><a class="secondary" href="wiki/">Read the guide</a></div>
+    <p class="compat">Requires macOS 15 or later</p></div>
+    <figure class="stage"><a href="assets/library.jpg"><img src="assets/library.jpg" width="2520" height="1520" fetchpriority="high" alt="Looper Library showing sound packs, download sizes and installation status"></a></figure>
+  </section>
+  <section id="features" class="shell gallery">
+    <p class="eyebrow">Settings</p><h2>Set up your sound library.</h2>
+    <div class="track" tabindex="0" role="region" aria-label="Settings screenshots" aria-roledescription="carousel">
+    <figure class="app-shot" data-label="Run Scope"><a href="assets/settings.jpg"><img src="assets/settings.jpg" width="2520" height="1520" loading="lazy" alt="Looper Settings, Run Scope pane"></a><figcaption><strong>Run Scope</strong> · Choose essential content or the full catalogue for each audio app.</figcaption></figure>
+    <figure class="app-shot" data-label="Schedule"><a href="assets/schedule.jpg"><img src="assets/schedule.jpg" width="2520" height="1520" loading="lazy" alt="Looper Settings, Schedule pane"></a><figcaption><strong>Schedule</strong> · Manage automatic runs and quiet hours.</figcaption></figure>
+    <figure class="app-shot" data-label="Deployment"><a href="assets/deployment.jpg"><img src="assets/deployment.jpg" width="2520" height="1520" loading="lazy" alt="Looper Settings, Deployment pane"></a><figcaption><strong>Deployment</strong> · Export settings from a reference Mac for deployment through MDM.</figcaption></figure>
+    </div>
+    <div class="carousel-nav" hidden><span aria-live="polite"></span><div><button type="button" data-step="-1" aria-label="Previous screenshot">Previous</button><button type="button" data-step="1" aria-label="Next screenshot">Next</button></div></div>
+  </section>
+  <section class="shell menu-demo">
+    <div><p class="eyebrow">Menu bar</p><h2>Follow a run at a glance.</h2><p>During an install, Looper animates its status icon and shows the percentage complete.</p></div>
+    <figure><div class="menu-preview" aria-label="Looper install progress, 42 percent complete"><span class="menu-frame"></span>42%</div>
+    <button id="play-menu" hidden>Play animation</button></figure>
+  </section>
+  <section class="shell guides"><h2>Set up Looper</h2>
+    <div class="guide-grid"><a href="wiki/"><h3>On your Mac</h3><p>Get started with the app, manifests and command-line tools.</p></a>
+    <a href="wiki/deployment.html"><h3>In a music lab</h3><p>Deploy the installer, configure Jamf Pro and preload content before sign-in.</p></a>
+    <a href="wiki/architecture.html"><h3>Inside the app</h3><p>Explore how the catalogue, installer and device helper work together.</p></a></div>
+  </section>
+</main>
+<footer class="shell footer"><span class="platform"><span class="mark swift"></span>Built with Swift for macOS</span><a href="https://github.com/maxhewett/Looper/issues">Report an issue</a></footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started · Looper Wiki</title>
+<link rel="icon" href="../assets/looper-icon.png">
+<script src="../assets/site.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="shell nav">
+  <a class="brand" href="../"><img src="../assets/looper-icon.png" alt="" width="36" height="36">Looper</a>
+  <nav aria-label="Primary"><a href="../#features">Features</a><a href="./" aria-current="page">Wiki</a><a href="https://github.com/maxhewett/Looper"><span class="mark github"></span>GitHub</a><select id="theme" aria-label="Appearance" title="Appearance" hidden><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select></nav>
+</header>
+<main class="shell docs" id="main">
+  <nav class="doc-nav" aria-label="Wiki"><p class="eyebrow">Wiki</p><a href="index.html" aria-current="page">Getting started</a><a href="deployment.html">Jamf deployment</a><a href="architecture.html">Inside Looper</a></nav>
+  <article class="doc-body">
+    <h1 id="getting-started">Getting started</h1>
+    <details class="contents"><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#open-the-library">Open the library</a></li>
+<li><a href="#choose-your-content">Choose your content</a></li>
+<li><a href="#follow-an-install">Follow an install</a></li>
+<li><a href="#use-the-cli">Use the CLI</a></li>
+</ul>
+</div>
+</details>
+    
+        <figure class="app-shot">
+          <a href="../assets/library.jpg"><img src="../assets/library.jpg" alt="Looper Library showing installed and missing sound packs" width="2520" height="1520" loading="lazy"></a>
+          <figcaption>Open Library to check which packages are installed, missing or available to download.</figcaption>
+        </figure>
+        
+    
+<p>Use Looper to see which Apple sound packs are already on your Mac and install the ones you need for your next session.</p>
+<h2 id="open-the-library">Open the library</h2>
+<p>Install your audio app first. Download the Looper installer from <a href="https://github.com/maxhewett/Looper/releases/latest">GitHub Releases</a>, run the package, then open Looper from Applications. After setup, click its menu bar icon to get back to the Library.</p>
+<p>The counters at the top summarise the catalogue. Each row shows the package name, audio app, download size and installation status. Use <strong>Search</strong> to find a pack by name or <strong>Filter</strong> to narrow the list.</p>
+<h2 id="choose-your-content">Choose your content</h2>
+<p>Open <strong>Run Scope</strong> from the Library. Choose <strong>Essential</strong> for the smaller starter collection, <strong>All</strong> for the full catalogue or <strong>None</strong> to skip that app. Open <strong>Advanced</strong> to include or skip particular package IDs. Save your settings before starting the run.</p>
+<h2 id="follow-an-install">Follow an install</h2>
+<p>Start the run using the play button in the window toolbar. Watch the menu bar for progress and open <strong>Logging</strong> for individual package results. On a shared Mac, an administrator can supply the scope and schedule through a configuration profile.</p>
+<h2 id="use-the-cli">Use the CLI</h2>
+<p>Check the last run with <code>looper status</code>. To preview a custom manifest, list its packages before installing them.</p>
+<pre><code class="language-sh">looper list --manifest /path/to/loops.json
+looper install --manifest /path/to/loops.json
+</code></pre>
+<p>Start with the <a href="https://github.com/maxhewett/Looper/blob/main/Manifests/sample-loops.json">sample manifest</a>. Replace its example package URL with an Apple content URL before running an install.</p>
+  </article>
+</main>
+<footer class="shell footer"><span class="platform"><span class="mark swift"></span>Built with Swift for macOS</span><a href="https://github.com/maxhewett/Looper/blob/main/website/guides/getting-started.md">View source document</a></footer>
+</body>
+</html>

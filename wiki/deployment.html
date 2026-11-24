@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jamf deployment · Looper Wiki</title>
+<link rel="icon" href="../assets/looper-icon.png">
+<script src="../assets/site.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="shell nav">
+  <a class="brand" href="../"><img src="../assets/looper-icon.png" alt="" width="36" height="36">Looper</a>
+  <nav aria-label="Primary"><a href="../#features">Features</a><a href="./" aria-current="page">Wiki</a><a href="https://github.com/maxhewett/Looper"><span class="mark github"></span>GitHub</a><select id="theme" aria-label="Appearance" title="Appearance" hidden><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select></nav>
+</header>
+<main class="shell docs" id="main">
+  <nav class="doc-nav" aria-label="Wiki"><p class="eyebrow">Wiki</p><a href="index.html">Getting started</a><a href="deployment.html" aria-current="page">Jamf deployment</a><a href="architecture.html">Inside Looper</a></nav>
+  <article class="doc-body">
+    <h1 id="deploy-looper-with-jamf-pro">Deploy Looper with Jamf Pro</h1>
+    <details class="contents"><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#configure-the-pilot-macs">Configure the pilot Macs</a><ul>
+<li><a href="#configuration-profile">Configuration profile</a></li>
+<li><a href="#package-policy">Package policy</a></li>
+<li><a href="#ongoing-sound-installs">Ongoing sound installs</a></li>
+</ul>
+</li>
+<li><a href="#verify-on-a-pilot-mac">Verify on a pilot Mac</a></li>
+</ul>
+</div>
+</details>
+    
+        <figure class="app-shot">
+          <a href="../assets/deployment.jpg"><img src="../assets/deployment.jpg" alt="Looper Settings showing the Deployment export controls" width="2520" height="1520" loading="lazy"></a>
+          <figcaption>Use Settings → Deployment on a reference Mac to export a configuration profile.</figcaption>
+        </figure>
+        
+    
+<p>For a shared lab, deploy the audio apps, a computer configuration profile, and <code>Looper.pkg</code>, in that order. The supplied lab profile selects Essential content for GarageBand and Logic Pro. The Mac can install that content before a student signs in.</p>
+<h2 id="configure-the-pilot-macs">Configure the pilot Macs</h2>
+<h3 id="configuration-profile">Configuration profile</h3>
+<p>The preference domain is <code>com.maxhewett.Looper</code>. Choose one of these ways to configure it.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Documentation table"><table>
+<thead>
+<tr>
+<th>Starting point</th>
+<th>What to deploy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use the lab defaults</td>
+<td>Upload the <a href="https://github.com/maxhewett/Looper/blob/main/Deployment/Looper-Lab.mobileconfig">lab configuration profile</a> under <strong>Computers → Configuration Profiles</strong>. It includes background-item approvals, enables device preloading, starts the menu bar at login, and skips the setup assistant.</td>
+</tr>
+<tr>
+<td>Copy a reference Mac</td>
+<td>Save the settings in Looper, then open <strong>Settings → Deployment</strong>. Review setup, preload, scheduling and quiet hours. Export <strong>Configuration profile</strong> to include approvals, or export <strong>Preferences plist</strong> for <strong>Application &amp; Custom Settings → Upload</strong> and deploy the <a href="https://github.com/maxhewett/Looper/blob/main/Deployment/Looper-Managed-Login-Items.mobileconfig">background-item approvals</a> alongside it. Each full profile export has fresh identifiers.</td>
+</tr>
+<tr>
+<td>Configure settings in Jamf</td>
+<td>In a computer profile, add <strong>Application &amp; Custom Settings → External Applications → Custom Schema</strong>. Enter the preference domain and paste the <a href="https://github.com/maxhewett/Looper/blob/main/Deployment/Jamf-Looper.schema.json">Jamf schema</a>. Review <strong>Plist Preview</strong>, then scope the <a href="https://github.com/maxhewett/Looper/blob/main/Deployment/Looper-Managed-Login-Items.mobileconfig">background-item approvals</a> to the same Macs.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Managed values take precedence over local choices. These are the settings most relevant to a lab rollout.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Documentation table"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RunAppContentSets</code></td>
+<td>Choose <strong>All</strong>, <strong>Essential</strong>, or <strong>None</strong> for each app. All and Essential pick up new packages in their scope. None disables the app. Existing profiles using arrays are also supported.</td>
+</tr>
+<tr>
+<td><code>AppPackageOverrides</code></td>
+<td>For an enabled app, <strong>Only</strong> limits installs to the listed IDs, including after the catalogue grows. <strong>Skip</strong> takes precedence. Both fields take comma-separated package or receipt IDs. Modern packs use IDs such as <code>0018_bassampsounds</code>.</td>
+</tr>
+<tr>
+<td><code>ExcludedPackageIDs</code></td>
+<td>Excludes IDs across all apps. Use this for shared packages that another app would otherwise include.</td>
+</tr>
+<tr>
+<td><code>PackagePriorities</code></td>
+<td>Maps IDs to integer priorities. Higher values install first. If Jamf omits the dictionary editor, upload a preferences plist.</td>
+</tr>
+<tr>
+<td><code>RunAtLogin</code>, <code>SkipSetupAssistant</code></td>
+<td>Control the menu bar and first-launch setup for each user. Administrators can reopen the assistant in <strong>Settings → About</strong>.</td>
+</tr>
+<tr>
+<td><code>ManagedPreloadEnabled</code>, <code>ScheduledInstallEnabled</code>, <code>ScheduleQuietHours</code></td>
+<td>Choose who starts unattended runs and when they may start. See the policy examples below.</td>
+</tr>
+<tr>
+<td><code>HelperRunMode</code>, <code>LogRetentionDays</code></td>
+<td>Select sequential or staged installs and retain logs for 1–365 days.</td>
+</tr>
+<tr>
+<td><code>NotifyNewLoopsAvailable</code>, <code>NotifyRelaunchPrompts</code>, <code>NotifyRunFailures</code>, <code>NotifyRunSummaries</code></td>
+<td>Enable or disable each notification independently.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="package-policy">Package policy</h3>
+<p>Create a computer policy after the profile has reached the pilot Macs.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Documentation table"><table>
+<thead>
+<tr>
+<th>Jamf field</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display name</td>
+<td>Install Looper</td>
+</tr>
+<tr>
+<td>Packages</td>
+<td>Upload <code>Looper.pkg</code></td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Recurring Check-in</td>
+</tr>
+<tr>
+<td>Execution frequency</td>
+<td>Once per computer</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>The same pilot Macs that received the configuration profile</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="ongoing-sound-installs">Ongoing sound installs</h3>
+<p><strong>Device preload</strong> is the mode used by the lab profile. With <code>ManagedPreloadEnabled</code> enabled and <code>RunAppContentSets</code> configured, Looper checks at package installation, at boot, and hourly. The device service honours scope, overrides and quiet hours even at the login window.</p>
+<p><strong>Jamf-controlled schedule</strong> gives Jamf control of the cadence. Disable <code>ManagedPreloadEnabled</code>, enable <code>ScheduledInstallEnabled</code>, and create a separate recurring policy that runs:</p>
+<pre><code class="language-sh">/usr/local/bin/looper install --scheduled
+</code></pre>
+<p>Choose the trigger and frequency in Jamf. For example, <code>ScheduleQuietHours</code> set to <code>8-16</code> blocks new scheduled starts from 8 am to 4 pm local time. Remove any previously deployed per-user Looper schedules when switching to this policy. Manual Library requests remain available and respect managed exclusions.</p>
+<h2 id="verify-on-a-pilot-mac">Verify on a pilot Mac</h2>
+<ol>
+<li>Install GarageBand or Logic Pro, confirm the lab profile has arrived, then let the package policy run.</li>
+<li>Check the helper and the last run. The helper can exit successfully between requests. Looper’s <strong>Logging</strong> screen and <code>/var/log/Looper/events.jsonl</code> show package-level results.</li>
+</ol>
+<pre><code class="language-sh">launchctl print system/com.maxhewett.Looper.device-helper
+/usr/local/bin/looper status
+</code></pre>
+<ol>
+<li>Wait for the preload to finish. GarageBand content from numbered package catalogues uses the device package installer. Modern Logic packs use one shared copy in <code>/Library/Application Support/Looper/Logic Pro Library.bundle</code>. Logic’s Essential selection includes <strong>Hip Hop Essentials</strong>, <strong>Electronic Essentials</strong>, and <strong>Studio Instrument Essentials</strong>.</li>
+<li>Sign in with a fresh standard account. Confirm the menu bar appears if enabled, open Logic, and play a sound from an installed pack. With all three Essential packs verified, check that Logic opens without offering to download them again.</li>
+</ol>
+<p>Looper connects a new account or empty default library at login and checks again when shared package definitions change. Accounts with populated or relocated personal libraries keep their existing selection. To move one of those accounts onto the shared library, choose <strong>Logic Pro → Settings → General → Sound Library → Locate</strong>, select the shared bundle, and relaunch Logic. <a href="https://support.apple.com/guide/logicpro/lgcp725c6d3d/mac">Apple’s Sound Library settings</a></p>
+  </article>
+</main>
+<footer class="shell footer"><span class="platform"><span class="mark swift"></span>Built with Swift for macOS</span><a href="https://github.com/maxhewett/Looper/blob/main/Deployment/README.md">View source document</a></footer>
+</body>
+</html>
