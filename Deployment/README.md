@@ -56,6 +56,14 @@ Managed values take precedence over local choices. These are the settings most r
 | `HelperRunMode`, `LogRetentionDays` | Select sequential or staged installs and retain logs for 1–365 days. |
 | `NotifyNewLoopsAvailable`, `NotifyRelaunchPrompts`, `NotifyRunFailures`, `NotifyRunSummaries` | Enable or disable each notification independently. |
 
+### Notification banners on shared Macs
+
+Upload [Looper-Notifications.mobileconfig](Looper-Notifications.mobileconfig) in **Computers → Configuration Profiles** and scope it to the pilot lab before installing Looper. Use it alongside the lab profile, a configuration exported by Looper, or your own Jamf preferences. If another profile already manages Looper notifications, configure that profile instead.
+
+The computer-level Notifications payload enables temporary banners and Notification Center for `com.maxhewett.Looper`. Sounds and lock-screen notifications are off for classroom use. Looper’s own notification preferences still control which events it sends. The lab profile already approves the helper and login items. For a schema-only rollout, deploy the standalone background-item approvals as well.
+
+On a pilot Mac, sign in as a standard user and check **System Settings → Notifications → Looper** after opening the app. Enable run summaries in Looper, complete a manual run with Focus off, and confirm the summary appears silently. [Apple’s Notifications payload](https://developer.apple.com/documentation/devicemanagement/notifications)
+
 ### Package policy
 
 Create a computer policy after the profile has reached the pilot Macs.
