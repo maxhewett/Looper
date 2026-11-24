@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDisplayName</key>
+			<string>Looper Privileged Helper</string>
+			<key>PayloadIdentifier</key>
+			<string>com.maxhewett.Looper.mdm.helper.approval</string>
+			<key>PayloadType</key>
+			<string>com.apple.servicemanagement</string>
+			<key>PayloadUUID</key>
+			<string>F4DB5DF9-72B3-4CC9-B4A6-0AA3CFC16CBF</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Rules</key>
+			<array>
+                <dict>
+                    <key>RuleType</key>
+                    <string>Label</string>
+                    <key>RuleValue</key>
+                    <string>com.maxhewett.Looper.preload</string>
+                </dict>
+                <dict>
+                    <key>RuleType</key>
+                    <string>Label</string>
+                    <key>RuleValue</key>
+                    <string>com.maxhewett.Looper.menu-bar</string>
+                </dict>
+                <dict>
+                    <key>RuleType</key>
+                    <string>Label</string>
+                    <key>RuleValue</key>
+                    <string>com.maxhewett.Looper.shared-library</string>
+                </dict>
+				<dict>
+					<key>Comment</key>
+					<string>Allow the package-installed Looper daemon.</string>
+					<key>RuleType</key>
+					<string>Label</string>
+					<key>RuleValue</key>
+					<string>com.maxhewett.Looper.device-helper</string>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Approve the Looper launch daemon.</string>
+					<key>RuleType</key>
+					<string>Label</string>
+					<key>RuleValue</key>
+					<string>com.maxhewett.Looper.helper</string>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Identify the Looper app for Background Task Management.</string>
+					<key>RuleType</key>
+					<string>BundleIdentifier</string>
+					<key>RuleValue</key>
+					<string>com.maxhewett.Looper</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>PayloadContent</key>
+			<dict>
+				<key>com.maxhewett.Looper</key>
+				<dict>
+					<key>Forced</key>
+					<array>
+						<dict>
+							<key>mcx_preference_settings</key>
+							<dict>
+								<key>RunAppContentSets</key>
+								<dict>
+									<key>GarageBand</key>
+									<string>Essential</string>
+									<key>Logic Pro</key>
+									<string>Essential</string>
+								</dict>
+								<key>RunAtLogin</key>
+                                <true/>
+                                <key>SkipSetupAssistant</key>
+                                <true/>
+                                <key>ManagedPreloadEnabled</key>
+                                <true/>
+                                <key>ScheduledInstallEnabled</key>
+								<false/>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>Looper Lab Settings</string>
+			<key>PayloadIdentifier</key>
+			<string>com.maxhewett.Looper.lab.settings</string>
+			<key>PayloadType</key>
+			<string>com.apple.ManagedClient.preferences</string>
+			<key>PayloadUUID</key>
+			<string>635017F5-C346-48C2-BC4A-30BC43BE0A66</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDisplayName</key>
+	<string>Looper Lab Configuration</string>
+	<key>PayloadIdentifier</key>
+	<string>com.maxhewett.Looper.lab</string>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>83B4AB2C-62BC-4B44-8BE8-B1B194952C64</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

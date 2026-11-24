@@ -120,3 +120,12 @@ select,button{font:inherit;color:var(--text);border:1px solid var(--line);backgr
     @keyframes lift{to{transform:translateY(-1.5rem)}}
   }
 }
+.attachments{align-self:start;background:var(--panel);border-radius:1rem;padding:1rem}
+.attachments h2{font-size:1.2rem;margin:0 0 .65rem}
+.attachments a{display:flex;align-items:flex-start;gap:.7rem;padding:.8rem 0;text-decoration:none;border-top:1px solid var(--line)}
+.attachments strong,.attachments small{display:block;overflow-wrap:anywhere}
+.attachments strong{font-size:.9rem}.attachments small{color:var(--muted);margin-top:.2rem}
+.attachments a:hover strong{text-decoration:underline;color:var(--accent)}
+.attachments i{flex:none;display:grid;place-items:center;padding-top:.5rem;width:2.4rem;height:2.9rem;font:650 .63rem system-ui;color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,var(--bg));clip-path:polygon(0 0,70% 0,100% 24%,100% 100%,0 100%);border-radius:.22rem}
+@media(min-width:1050px){.deployment-doc{width:min(86rem,calc(100% - 3rem));grid-template-columns:10rem minmax(0,1fr) minmax(14rem,18rem);gap:2rem}.attachments{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto}}
+@media(max-width:1049px){.deployment-doc{grid-template-columns:minmax(0,1fr)}.deployment-doc .doc-nav{position:static}.attachments{grid-row:2}}

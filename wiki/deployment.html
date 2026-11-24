@@ -14,7 +14,7 @@
   <a class="brand" href="../"><img src="../assets/looper-icon.png" alt="" width="36" height="36">Looper</a>
   <nav aria-label="Primary"><a href="../#features">Features</a><a href="./" aria-current="page">Wiki</a><a href="https://github.com/maxhewett/Looper"><span class="mark github"></span>GitHub</a><select id="theme" aria-label="Appearance" title="Appearance" hidden><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select></nav>
 </header>
-<main class="shell docs" id="main">
+<main class="shell docs deployment-doc" id="main">
   <nav class="doc-nav" aria-label="Wiki"><p class="eyebrow">Wiki</p><a href="index.html">Getting started</a><a href="deployment.html" aria-current="page">Jamf deployment</a><a href="architecture.html">Inside Looper</a></nav>
   <article class="doc-body">
     <h1 id="deploy-looper-with-jamf-pro">Deploy Looper with Jamf Pro</h1>
@@ -22,6 +22,7 @@
 <ul>
 <li><a href="#configure-the-pilot-macs">Configure the pilot Macs</a><ul>
 <li><a href="#configuration-profile">Configuration profile</a></li>
+<li><a href="#notification-banners-on-shared-macs">Notification banners on shared Macs</a></li>
 <li><a href="#package-policy">Package policy</a></li>
 <li><a href="#ongoing-sound-installs">Ongoing sound installs</a></li>
 </ul>
@@ -106,6 +107,10 @@
 </tr>
 </tbody>
 </table></div>
+<h3 id="notification-banners-on-shared-macs">Notification banners on shared Macs</h3>
+<p>Upload <a href="https://github.com/maxhewett/Looper/blob/main/Deployment/Looper-Notifications.mobileconfig">Looper-Notifications.mobileconfig</a> in <strong>Computers → Configuration Profiles</strong> and scope it to the pilot lab before installing Looper. Use it alongside the lab profile, a configuration exported by Looper, or your own Jamf preferences. If another profile already manages Looper notifications, configure that profile instead.</p>
+<p>The computer-level Notifications payload enables temporary banners and Notification Center for <code>com.maxhewett.Looper</code>. Sounds and lock-screen notifications are off for classroom use. Looper’s own notification preferences still control which events it sends. The lab profile already approves the helper and login items. For a schema-only rollout, deploy the standalone background-item approvals as well.</p>
+<p>On a pilot Mac, sign in as a standard user and check <strong>System Settings → Notifications → Looper</strong> after opening the app. Enable run summaries in Looper, complete a manual run with Focus off, and confirm the summary appears silently. <a href="https://developer.apple.com/documentation/devicemanagement/notifications">Apple’s Notifications payload</a></p>
 <h3 id="package-policy">Package policy</h3>
 <p>Create a computer policy after the profile has reached the pilot Macs.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Documentation table"><table>
@@ -158,6 +163,7 @@
 </ol>
 <p>Looper connects a new account or empty default library at login and checks again when shared package definitions change. Accounts with populated or relocated personal libraries keep their existing selection. To move one of those accounts onto the shared library, choose <strong>Logic Pro → Settings → General → Sound Library → Locate</strong>, select the shared bundle, and relaunch Logic. <a href="https://support.apple.com/guide/logicpro/lgcp725c6d3d/mac">Apple’s Sound Library settings</a></p>
   </article>
+  <aside class="attachments" aria-label="Deployment downloads"><h2>Downloads</h2><a download href="../downloads/Looper-Lab.mobileconfig"><i aria-hidden="true">Profile</i><span><strong>Looper-Lab.mobileconfig</strong><small>Essential sounds, preload and background-item approvals.</small></span></a><a download href="../downloads/Looper-Notifications.mobileconfig"><i aria-hidden="true">Profile</i><span><strong>Looper-Notifications.mobileconfig</strong><small>Silent banners for signed-in lab users.</small></span></a><a download href="../downloads/Looper-Managed-Login-Items.mobileconfig"><i aria-hidden="true">Profile</i><span><strong>Looper-Managed-Login-Items.mobileconfig</strong><small>Helper and login-item approvals for custom rollouts.</small></span></a><a download href="../downloads/Jamf-Looper.schema.json"><i aria-hidden="true">JSON</i><span><strong>Jamf-Looper.schema.json</strong><small>Preference fields for Jamf’s custom settings editor.</small></span></a><a href="https://github.com/maxhewett/Looper/releases/download/v1.0/Looper-1.0.pkg"><i aria-hidden="true">PKG</i><span><strong>Looper-1.0.pkg</strong><small>Signed installer for the lab Macs.</small></span></a></aside>
 </main>
 <footer class="shell footer"><span class="platform"><span class="mark swift"></span>Built with Swift for macOS</span><a href="https://github.com/maxhewett/Looper/blob/main/Deployment/README.md">View source document</a></footer>
 </body>

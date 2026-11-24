@@ -1,0 +1,157 @@
+{
+  "title": "Looper",
+  "description": "Managed settings for com.maxhewett.Looper.",
+  "type": "object",
+  "properties": {
+    "RunAtLogin": {
+      "title": "Run at Login",
+      "type": "boolean",
+      "description": "Start the packaged Looper menu bar in each graphical login session. Defaults to enabled."
+    },
+    "SkipSetupAssistant": {
+      "title": "Skip Setup Assistant",
+      "type": "boolean",
+      "description": "Suppress first-open setup for each user. Settings can still open the assistant manually."
+    },
+    "RunAppContentSets": {
+      "title": "Run Scope",
+      "type": "object",
+      "description": "Apps omitted from this setting are out of scope.",
+      "properties": {
+        "GarageBand": {
+          "title": "GarageBand",
+          "type": "string",
+          "description": "All follows the catalogue, Essential follows the essential set, and None disables the app.",
+          "enum": [
+            "All",
+            "Essential",
+            "None"
+          ]
+        },
+        "Logic Pro": {
+          "title": "Logic Pro",
+          "type": "string",
+          "description": "All follows the catalogue, Essential follows the essential set, and None disables the app.",
+          "enum": [
+            "All",
+            "Essential",
+            "None"
+          ]
+        }
+      }
+    },
+    "AppPackageOverrides": {
+      "title": "Per-app Package Overrides",
+      "type": "object",
+      "description": "Use comma-separated package IDs or installer receipt IDs.",
+      "properties": {
+        "GarageBand": {
+          "title": "GarageBand",
+          "type": "object",
+          "description": "Overrides for GarageBand.",
+          "properties": {
+            "Skip": {
+              "title": "Skip",
+              "type": "string",
+              "description": "Packages to exclude for this app. Skip takes precedence over Only."
+            },
+            "Only": {
+              "title": "Only Install",
+              "type": "string",
+              "description": "When populated, install only these packages for this app. New IDs are excluded automatically. None still disables the app."
+            }
+          }
+        },
+        "Logic Pro": {
+          "title": "Logic Pro",
+          "type": "object",
+          "description": "Overrides for Logic Pro.",
+          "properties": {
+            "Skip": {
+              "title": "Skip",
+              "type": "string",
+              "description": "Packages to exclude for this app. Skip takes precedence over Only."
+            },
+            "Only": {
+              "title": "Only Install",
+              "type": "string",
+              "description": "When populated, install only these packages for this app. New IDs are excluded automatically. None still disables the app."
+            }
+          }
+        }
+      }
+    },
+    "ExcludedPackageIDs": {
+      "title": "Global Package Exclusions",
+      "type": "string",
+      "description": "Comma-separated package or receipt IDs excluded for every app."
+    },
+    "PackagePriorities": {
+      "title": "Package Priorities",
+      "type": "object",
+      "description": "Map package or receipt IDs to integer priorities. Higher values install first. Use a custom plist for arbitrary keys if Jamf does not render this editor.",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "ManagedPreloadEnabled": {
+      "title": "Preload managed sound library",
+      "type": "boolean",
+      "description": "Install the managed RunAppContentSets scope at deployment, at boot and hourly. Runs as a device service and honors quiet hours.",
+      "default": false
+    },
+    "ScheduledInstallEnabled": {
+      "title": "Allow Jamf Scheduled Installs",
+      "type": "boolean",
+      "description": "Permits looper install --scheduled. Set the cadence in the Jamf policy.",
+      "default": false
+    },
+    "ScheduleQuietHours": {
+      "title": "Scheduled Install Quiet Hours",
+      "type": "string",
+      "description": "Optional local hours as start-end, in 24-hour time. For example, 8-16 blocks starts from 8 AM until 4 PM.",
+      "pattern": "^$|^(?:[01]?\\d|2[0-3])-(?:[01]?\\d|2[0-3])$"
+    },
+    "LogRetentionDays": {
+      "title": "Log Retention in Days",
+      "type": "integer",
+      "description": "Days to retain Looper logs.",
+      "minimum": 1,
+      "maximum": 365,
+      "default": 30
+    },
+    "HelperRunMode": {
+      "title": "Helper Run Mode",
+      "type": "string",
+      "description": "Select sequential or staged helper mode.",
+      "enum": [
+        "sequential",
+        "staged"
+      ]
+    },
+    "NotifyNewLoopsAvailable": {
+      "title": "New Loops Notifications",
+      "type": "boolean",
+      "description": "Enable new loops notifications.",
+      "default": true
+    },
+    "NotifyRelaunchPrompts": {
+      "title": "Relaunch Prompts Notifications",
+      "type": "boolean",
+      "description": "Enable relaunch prompts notifications.",
+      "default": true
+    },
+    "NotifyRunFailures": {
+      "title": "Run Failures Notifications",
+      "type": "boolean",
+      "description": "Enable run failures notifications.",
+      "default": true
+    },
+    "NotifyRunSummaries": {
+      "title": "Run Summaries Notifications",
+      "type": "boolean",
+      "description": "Enable run summaries notifications.",
+      "default": false
+    }
+  }
+}

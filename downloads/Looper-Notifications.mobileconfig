@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadIdentifier</key>
+	<string>com.maxhewett.Looper.mdm.notifications</string>
+	<key>PayloadDisplayName</key>
+	<string>Looper Notifications</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+	<key>PayloadUUID</key>
+	<string>AB7D3964-01C4-4C5D-A588-FAB50BC447CB</string>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadType</key>
+			<string>com.apple.notificationsettings</string>
+			<key>PayloadIdentifier</key>
+			<string>com.maxhewett.Looper.mdm.notifications.settings</string>
+			<key>PayloadDisplayName</key>
+			<string>Looper notification settings</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>PayloadUUID</key>
+			<string>85EDB591-8F4F-4BB8-A391-DE8D44CA4065</string>
+			<key>NotificationSettings</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.maxhewett.Looper</string>
+					<key>NotificationsEnabled</key>
+					<true/>
+					<key>AlertType</key>
+					<integer>1</integer>
+					<key>SoundsEnabled</key>
+					<false/>
+					<key>ShowInLockScreen</key>
+					<false/>
+					<key>ShowInNotificationCenter</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
