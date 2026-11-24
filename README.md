@@ -1,8 +1,16 @@
 # Looper
 
+<img width="150" height="auto" alt="Looper-macOS-Default-1024@1x" src="https://github.com/user-attachments/assets/4a90a3ff-3e2d-4f16-9f69-0036c6ca1a8e" />
+
+
+https://maxhewett.github.io/Looper/
+
+
 [![Platform: macOS 15+](https://img.shields.io/badge/macOS-15%2B-333333?logo=apple&logoColor=white)](Looper.xcodeproj/project.pbxproj)
 [![Language: Swift](https://img.shields.io/badge/Swift-F05138?logo=swift&logoColor=white)](Sources/)
 [![Deployment: Jamf Pro](https://img.shields.io/badge/Deployment-Jamf%20Pro-28539B)](Deployment/README.md)
+
+---
 
 Looper is an companion app for Apple's GarageBand, Logic Pro, and
 MainStage.
@@ -11,6 +19,11 @@ It downloads Apple loop packages automatically, based on a configurable catalogu
 
 It is manifest-driven, so changes to the Apple content catalogue don't (usually) mean you need to download an update.
 repaired without rewriting the installer.
+
+## Screenshots
+
+<img width="50%" height="auto" alt="library" src="https://github.com/user-attachments/assets/c41c0068-ab19-4a6f-9e16-27d06c3eabc7" /><img width="50%" height="auto" alt="schedule" src="https://github.com/user-attachments/assets/efcfca11-64af-4725-88fb-f7ba8a621ceb" /><img width="50%" height="auto" alt="settings" src="https://github.com/user-attachments/assets/29187666-78fc-4d38-bd00-47b3e53c4c10" /><img width="50%" height="auto" alt="deployment" src="https://github.com/user-attachments/assets/94eb1b8e-a047-41a2-a3a2-60354f0918a3" />
+
 
 ## A Note on the Current State of Loops
 
